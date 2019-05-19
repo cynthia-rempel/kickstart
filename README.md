@@ -14,7 +14,9 @@ On a virtual system, you can create two DVD drives and stick both disks in.
 
 ## "AS-IS"
 
-To use it "as-is" run ./create-kickstart.iso
+To use it "as-is" run:
+
+sudo ./create-kickstart.iso
 
 **To find the ISOs:**
 
