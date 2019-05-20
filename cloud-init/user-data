@@ -1,27 +1,23 @@
 #cloud-config
 # vim: syntax=yaml
 password: centos
-chpasswd: { expire: False }
+chpasswd: { expire: True }
 ssh_pwauth: True
 
-# Install Openshift
-# https://blog.centos.org/2018/03/centos-atomic-host-7-1802-available-for-download/
-# Add yum repository configuration to the system
-#
-# The following example adds the file /etc/yum.repos.d/epel_testing.repo
-# which can then subsequently be used by yum for later operations.
-# yum_repos:
-    # The name of the repository
-#    epel-testing:
-        # Any repository configuration options
-        # See: man yum.conf
-        #
-        # This one is required!
-#        baseurl: http://download.fedoraproject.org/pub/epel/testing/5/$basearch
-#        enabled: false
-#        failovermethod: priority
-#        gpgcheck: true
-#        gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL
-#        name: Extra Packages for Enterprise Linux 5 - Testing
+write_files:
+  - path: /etc/selinux/config
+    content: |
+      SELINUX=enforcing
+      SELINUXTYPE=targeted
+  - path: /etc/sysconfig/docker
+    content: |
+      OPTIONS='--selinux-enabled --log-opt max-size=1M --log-opt max-file=3'
+      if [ -z "${DOCKER_CERT_PATH}" ]; then
+          DOCKER_CERT_PATH=/etc/docker
+      fi
+  - path: /etc/cloud/cloud-init.disabled
+    content: |
+        Disable cloud-init after first provisioning.
+        Please use more standard configuration tool, such as ansible or puppet.
 
 # https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
