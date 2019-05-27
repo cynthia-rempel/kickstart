@@ -17,6 +17,7 @@ mkdir -p /var/tmp/media/mydrive
 rsync -av /media/mydrive/ /var/tmp/media/mydrive/
 umount /media/mydrive
 cp atomic-host/kickstart.cfg /var/tmp/media/mydrive/
+cp atomic-host/glusterfs-kickstart.cfg /var/tmp/media/mydrive/
 cp atomic-host/isolinux.cfg /var/tmp/media/mydrive/isolinux/
 cd /var/tmp/media/mydrive
 # if there's trouble, check the vanilla boot option
