@@ -8,7 +8,7 @@ genisoimage \
   -output /var/tmp/media/atomic01-cidata.iso \
   -volid cidata \
   -joliet \
-  -rock user-data meta-data
+  -rock user-data meta-data bootcmd
 cd ..
 mkdir -p /media/mydrive
 mount -t iso9660 -o loop ./CentOS-Atomic-Host-Installer.iso /media/mydrive

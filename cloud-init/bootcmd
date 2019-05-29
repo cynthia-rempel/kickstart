@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Run on boot once
+set -eux
+if [ -f /etc/sysconfig/network-scripts/ifcfg-enp0s3 ]; then
+    exit 0
+fi
+
+echo "" > /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
+cat <<EOF >/etc/sysconfig/network-scripts/ifcfg-enp0s3
+BOOTPROTO=static
+DEVICE=enp0s3
+ONBOOT=yes
+TYPE=Ethernet
+IPADDR=192.168.16.12
+GATEWAY=192.168.16.1
+DNS1=192.168.16.1
+NETMASK=255.255.255.0
+NM_CONTROLLED=no
+EOF
+
+# Restart
+systemctl reboot

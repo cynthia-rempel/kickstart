@@ -1,3 +1,21 @@
 instance-id: Atomic01
-local-hostname: atomic-host-001
+
+# instance-id: iid-abcdefg
+# network-interfaces: |
+#  iface eth0 inet static
+#  address 192.168.1.10
+#  network 192.168.1.0
+#  netmask 255.255.255.0
+#  broadcast 192.168.1.255
+#  gateway 192.168.1.254
+#  nameservers
+#    search: [foo.local, bar.local]
+#    addresses: [8.8.8.8]
+# hostname: myhost
+
+
+# inject an /etc/network/interfaces file by providing the content for that file
+# in the network-interfaces field of metadata
+
+# local-hostname: atomic-host-001
 
