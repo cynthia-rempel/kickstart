@@ -28,11 +28,21 @@ grep user kickstart.cfg
 
 ## To customize the Centos Atomic ISO:
 
-Edit the kickstart.cfg and the cloud-init/user-data file
+Edit
+
+### atomic-host/kickstart.cfg (the initial install disk)
+
+### cloud-init/bootcmd (what happens before networking starts, set ifcfg)
+
+### cloud-init/user-data (the initial configuration)
 
 **To get you started with kickstart, review:**
 
 https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/installation_guide/sect-kickstart-examples
+
+**To get you started with bootcmd, review:**
+
+https://www.projectatomic.io/blog/2015/06/creating-a-simple-bare-metal-atomic-host-cluster/
 
 **To get you started with cloud-init, review:**
 
